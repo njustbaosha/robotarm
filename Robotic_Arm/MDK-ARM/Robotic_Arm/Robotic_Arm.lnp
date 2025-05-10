@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 "robotic_arm\startup_stm32f407xx.o"
 "robotic_arm\main.o"
 "robotic_arm\gpio.o"
@@ -27,6 +27,7 @@
 "robotic_arm\system_stm32f4xx.o"
 "robotic_arm\servo.o"
 "robotic_arm\kinematic_solution.o"
+"robotic_arm\bsp_usart.o"
 --strict --scatter "Robotic_Arm\Robotic_Arm.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

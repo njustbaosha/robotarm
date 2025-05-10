@@ -22,6 +22,8 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "bsp_usart.h"
+#include "math.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -43,6 +45,7 @@ uint8_t Suck_Flag = 0;
 /* USER CODE BEGIN PM */
 float theta[3];
 int32_t coord[3];//X Y Z
+USARTInstance uartinstance;
 
 /* USER CODE END PM */
 
@@ -65,6 +68,43 @@ void EnableFPU(void) {
     // 启用CP10和CP11协处理器（FPU）
     SCB->CPACR |= ((3UL << 10*2) | (3UL << 11*2)); // CP10和CP11全访问
 }
+
+void pack_callback(void *param) 
+{
+    // 假设uartinstance已定义并包含recv_buff和recv_len
+    uint8_t* buff = uartinstance.recv_buff;
+    
+    // 检查帧头
+    if(buff[0] != 0xED) return;
+    
+    // 解析摇杆数据（小端序）
+    coord[0] = buff[1] | (buff[2] << 8);  // 左X
+    coord[1] = buff[3] | (buff[4] << 8);  // 左Y
+    // coord[2] = buff[5] | (buff[6] << 8);  // 右X
+    coord[2] = buff[7] | (buff[8] << 8);  // 右Y
+    
+    // 添加绝对值200限位处理
+    for(int i = 0; i < 3; i++) {
+        if(coord[i] > 200) {
+            coord[i] = 200;
+        }
+        else if(coord[i] < -200) {
+            coord[i] = -200;
+        }
+    }
+    
+    // 保持原有的Y轴下限为0的处理
+    if(coord[1] < 0) {
+        coord[1] = 0;
+    }
+    
+    // 存储按钮状态（A/B/X/Y）
+    if(buff[9] == 0x01)   // A按钮
+    {
+        Suck_Flag = 1;
+    }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -110,6 +150,14 @@ int main(void)
 	coord[0]=0;
 	coord[1]=150;
 	coord[2]=165;
+
+  USART_Init_Config_s uart_config;
+  uart_config.recv_buff_size = 50;
+  uart_config.usart_handle = &huart1;
+  uart_config.module_callback = pack_callback;
+  uart_config.param = &uartinstance;
+  USARTRegister(&uartinstance, &uart_config);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
