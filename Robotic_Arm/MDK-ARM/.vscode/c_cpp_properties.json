@@ -3,19 +3,19 @@
         {
             "name": "Robotic_Arm",
             "includePath": [
-                "e:\\stm32Project\\Robotic_Arm\\Core\\Inc",
-                "e:\\stm32Project\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
-                "e:\\stm32Project\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
-                "e:\\stm32Project\\Robotic_Arm\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
-                "e:\\stm32Project\\Robotic_Arm\\Drivers\\CMSIS\\Include",
-                "e:\\stm32Project\\Robotic_Arm\\BSP",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Core\\Inc",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Inc",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Inc\\Legacy",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Drivers\\CMSIS\\Include",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\BSP",
                 "D:\\keil_5\\ARM\\ARMCLANG\\include",
                 "D:\\keil_5\\ARM\\ARMCLANG\\include\\arm_linux",
                 "D:\\keil_5\\ARM\\ARMCLANG\\include\\arm_linux_compat",
                 "D:\\keil_5\\ARM\\ARMCLANG\\include\\libcxx",
-                "e:\\stm32Project\\Robotic_Arm\\MDK-ARM",
-                "e:\\stm32Project\\Robotic_Arm\\Core\\Src",
-                "e:\\stm32Project\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Src"
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\MDK-ARM",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Core\\Src",
+                "e:\\stm32Project\\robotarm\\Robotic_Arm\\Drivers\\STM32F4xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

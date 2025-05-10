@@ -106,6 +106,10 @@ int main(void)
   Servo_Config(1, &htim5, TIM_CHANNEL_2, 500, 2500, 0, 180);
   Servo_Config(2, &htim5, TIM_CHANNEL_3, 500, 2500, 0, 180);
   Servo_Config(3, &htim5, TIM_CHANNEL_4, 500, 2500, 0, 180);
+	
+	coord[0]=0;
+	coord[1]=150;
+	coord[2]=165;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,7 +133,7 @@ int main(void)
 
     theta[0] = 180 - theta[0];
     
-
+ 
 
     Servo_SetAngle(0, theta[1]);
     HAL_Delay(1000);  
