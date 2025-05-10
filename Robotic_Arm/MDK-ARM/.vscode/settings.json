@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "servo.h": "c",
+        "kinematic_solution.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "dma.h": "c"
+    }
+}
